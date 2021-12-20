@@ -106,22 +106,39 @@ This installation allows you to connect your GitHub repository with your Google 
 
 The following steps provide instructions for installing the app only for the gcp-pipeline repository, but you can choose to install the app for more or all your repositories
 
+1. Go to the GitHub Marketplace page for the Cloud Build app:
+https://github.com/marketplace/google-cloud-build
+
+- If this is your first time configuring an app in GitHub: Click Setup with Google Cloud Build at the bottom of the page. Then click Grant this app access to your GitHub account.
+
+- If this is not the first time configuring an app in GitHub: Click Configure access. The Applications page of your personal account opens.
+
+2. Click Configure in the Cloud Build row.
+
+3. Select Only select repositories, then select solutions-terraform-cloudbuild-gitops to connect to the repository.
+
+4. Click Save or Install—the button label changes depending on your workflow. You are redirected to Google Cloud to continue the installation.
+
+5. Sign in with your Google Cloud account. If requested, authorize Cloud Build integration with GitHub.
+
+6. On the Cloud Build page, select your project. A wizard appears.
+
+7. In the Select repository section, select your GitHub account and the solutions-terraform-cloudbuild-gitops repository.
+
+8. If you agree with the terms and conditions, select the checkbox, then click Connect.
+
+9. In the Create a trigger section, click Create a trigger and add the trigger name.
+
+10. In the Event section, select Push to a branch, enter .* in the Base Branch field, and then click Create.
+
+The Cloud Build GitHub app is now configured, and your GitHub repository is linked to your Google Cloud project. From now on, changes to the GitHub repository trigger Cloud Build executions, which report the results back to GitHub.
 
 
 
 
-
-
-
-
-Just for demostration, this step will:
+## Just for demostration, this step will:
  1. Configure an apache2 http server on network '**dev**' and subnet '**dev**-subnet-01'
  2. Open port 80 on firewall for this http server 
-
-
-
-
-
 
 
 ```bash
@@ -132,7 +149,7 @@ terraform apply
 terraform destroy
 ```
 
-## Promoting your environment to **production**
+## Promoting the environment to **production**
 
 Once you have tested your app (in this example an apache2 http server), you can promote your configuration to prodution. This step will:
  1. Configure an apache2 http server on network '**prod**' and subnet '**prod**-subnet-01'
