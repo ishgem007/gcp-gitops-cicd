@@ -68,7 +68,9 @@ gsutil mb gs://${PROJECT_ID}-tfstate
 Pleae note: You may have issue with this if ```export PROJECT_ID='project id' ``` is not executed prior to this.
 
 2. In Cloud Shell, create the Cloud Storage bucket:
-```gsutil versioning set on gs://${PROJECT_ID}-tfstate
+
+```
+gsutil versioning set on gs://${PROJECT_ID}-tfstate
 ````
 
 3. Replace the PROJECT_ID placeholder with the project ID in both the terraform.tfvars and backend.tf files:
@@ -80,7 +82,8 @@ sed -i s/PROJECT_ID/$PROJECT_ID/g environments/*/backend.tf
 
 4. Check whether all files were updated:
 
-```git status
+```
+git status
 ```
 
 5. Commit and push your changes:
@@ -96,12 +99,16 @@ To allow Cloud Build service account to run Terraform scripts with the goal of m
 
 1. In Cloud Shell, retrieve the email for your project's Cloud Build service account:
 
-```CLOUDBUILD_SA="$(gcloud projects describe $PROJECT_ID \
-    --format 'value(projectNumber)')@cloudbuild.gserviceaccount.com"```
+```
+CLOUDBUILD_SA="$(gcloud projects describe $PROJECT_ID \
+    --format 'value(projectNumber)')@cloudbuild.gserviceaccount.com"
+```
 
 2. Grant the required access to your Cloud Build service account:
-```gcloud projects add-iam-policy-binding $PROJECT_ID \
-    --member serviceAccount:$CLOUDBUILD_SA --role roles/editor```
+```
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member serviceAccount:$CLOUDBUILD_SA --role roles/editor
+```
 
 ## Directly connecting Cloud Build to your GitHub repository
 This installation allows you to connect your GitHub repository with your Google Cloud project so that Cloud Build can automatically apply your Terraform manifests each time you create a new branch or push code to GitHub.
