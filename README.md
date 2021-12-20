@@ -9,10 +9,12 @@
 3. In the Cloud Console, activate Cloud Shell.
 
 4. In Cloud Shell, get the ID of the project you just selected:
+
 ```gcloud config get-value project 
 ```
 
 5. We need the Project ID in some the commands, we need to make it available. We need to export the Project ID.
+
 ```export PROJECT_ID='project_id'
 ```
 6. Enable the required APIs:
@@ -46,9 +48,9 @@ The code in this repository is structured as follows:
 
 For dev and prod environments, the following steps are executed:
 
-    1. ```terraform init```
-    2. ```terraform plan```
-    3. ```terraform appl```
+    1. terraform init
+    2. terraform plan
+    3. terraform apply
 
 ## Configuring Terraform to store state in a Cloud Storage bucket
 
