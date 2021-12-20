@@ -10,16 +10,19 @@
 
 4. In Cloud Shell, get the ID of the project you just selected:
 
-```gcloud config get-value project 
+```
+gcloud config get-value project 
 ```
 
 5. We need the Project ID in some the commands, we need to make it available. We need to export the Project ID.
 
-```export PROJECT_ID='project_id'
+```
+export PROJECT_ID='project_id'
 ```
 6. Enable the required APIs:
 
-```gcloud services enable cloudbuild.googleapis.com compute.googleapis.com
+```
+gcloud services enable cloudbuild.googleapis.com compute.googleapis.com
 ```
 7. If you've never used Git in Cloud Shell, configure it with your name and email address:
 
