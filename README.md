@@ -1,4 +1,4 @@
-# Databots infrastructure as code with Terraform Cloud Build
+# Steps to build infrastructure as code with Terraform Cloud Build
 
 ## Configuring your **dev** environment
 
@@ -13,12 +13,11 @@
 ```
 
 5. We need the Project ID in some the commands, we need to make it available. We need to export the Project ID.
-``` export PROJECT_ID='project_id'
+```export PROJECT_ID='project_id'
 ```
 6. Enable the required APIs:
 
-``` gcloud services enable cloudbuild.googleapis.com compute.googleapis.com
-
+```gcloud services enable cloudbuild.googleapis.com compute.googleapis.com
 ```
 7. If you've never used Git in Cloud Shell, configure it with your name and email address:
 
@@ -47,9 +46,9 @@ The code in this repository is structured as follows:
 
 For dev and prod environments, the following steps are executed:
 
-    1. ```terraform init ```
-    2. ```terraform plan ```
-    3. ```terraform apply ```
+    1. ```terraform init```
+    2. ```terraform plan```
+    3. ```terraform appl```
 
 ## Configuring Terraform to store state in a Cloud Storage bucket
 
@@ -93,13 +92,11 @@ To allow Cloud Build service account to run Terraform scripts with the goal of m
 1. In Cloud Shell, retrieve the email for your project's Cloud Build service account:
 
 ```CLOUDBUILD_SA="$(gcloud projects describe $PROJECT_ID \
-    --format 'value(projectNumber)')@cloudbuild.gserviceaccount.com"
-```
+    --format 'value(projectNumber)')@cloudbuild.gserviceaccount.com"```
 
 2. Grant the required access to your Cloud Build service account:
 ```gcloud projects add-iam-policy-binding $PROJECT_ID \
-    --member serviceAccount:$CLOUDBUILD_SA --role roles/editor
-```
+    --member serviceAccount:$CLOUDBUILD_SA --role roles/editor```
 
 ## Directly connecting Cloud Build to your GitHub repository
 This installation allows you to connect your GitHub repository with your Google Cloud project so that Cloud Build can automatically apply your Terraform manifests each time you create a new branch or push code to GitHub.
